@@ -4,11 +4,7 @@ class Anagrams
   end
 
   def read_wordlist
-    if @file.is_a?(Array)
-      @file
-    else
-      File.readlines(@file, :encoding => "UTF-8", chomp: true)
-    end
+      File.readlines(@file, encoding: "UTF-8", chomp: true)
   end
     
   def get_anagrams
@@ -25,8 +21,12 @@ class Anagrams
   end
 
   def show
-      get_anagrams.values.select {|word_values| word_values.length > 1}.each do |words|
-      puts words.join(", ")
+    get_anagrams.values.select {|word_values| word_values.length > 1}.each do |words|
+      puts to_s(words)
     end
+  end
+
+  def to_s(show)
+    show.join(", ")
   end
 end

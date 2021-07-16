@@ -7,4 +7,10 @@ RSpec.describe Anagrams do
         expect(an.get_anagrams).to eq({"abeorst"=>["boaster", "boaters"], "aepst"=>["paste", "pates"], "eefhrrs"=>["fresher", "refresh"]})
       end
   end
+  describe '#to_s' do
+    it "returns all anagrams from a file" do
+      an = Anagrams.new("test.txt")
+        expect(an.get_anagrams).to eq({"abeorst"=>["boaster", "boaters"], "aepst"=>["paste", "pates"], "eefhrrs"=>["fresher", "refresh"]})
+      end
+  end
 end
