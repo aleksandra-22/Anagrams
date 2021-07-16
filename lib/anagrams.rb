@@ -23,4 +23,11 @@ class Anagrams
     end
     result
   end
+
+  def show(input_text)
+    an = Anagrams.new(input_text)
+    an.get_anagrams.values.select {|word_values| word_values.length > 1}.each do |words|
+      puts words.join(", ")
+    end
+  end
 end
