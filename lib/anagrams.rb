@@ -4,7 +4,11 @@ class Anagrams
   end
 
   def read_wordlist
+    if @file.is_a?(Array)
+      @file
+    else
       File.readlines(@file, encoding: "UTF-8", chomp: true)
+    end
   end
     
   def get_anagrams
@@ -18,6 +22,10 @@ class Anagrams
       end
     end
     result
+  end
+
+  def get_word(word)
+    get_anagrams[word.chars.sort.join]
   end
 
   def show
