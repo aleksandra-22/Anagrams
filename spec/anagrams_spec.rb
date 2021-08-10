@@ -1,10 +1,10 @@
 require_relative "../lib/anagrams"
 
 RSpec.describe Anagrams do
-  describe '#show' do
+  describe '#to_s' do
     it "returns all anagrams from a file" do
       an = Anagrams.new("test.txt")
-        expect(an.show).to eql([["boaster", "boaters"], ["paste", "pates"], ["fresher", "refresh"]])
+        expect(an.to_s).to eql("boaster, boaters" + "\n" + "paste, pates" + "\n" + "fresher, refresh")
     end
   end
 

@@ -1,3 +1,5 @@
+require 'active_support'
+
 class Anagrams
   def initialize(file)
     @file = file
@@ -17,19 +19,18 @@ class Anagrams
     @anagram_cache
   end
   
-  def get_anagrams(input_word)
-    key = word_hash(input_word)
-    @anagram_cache[key] #if you put generate_anagrams[key] instead, it works, but "slow"
-  end
-
-  def show
-    generate_anagrams.values.select {|word_values| word_values.length > 1}.each do |words|
-      puts to_s(words)
+  def get_anagrams(input_word = nil)
+    generate_anagrams if @anagram_cache.empty?
+    if input_word.present?
+      key = word_hash(input_word)
+      @anagram_cache[key]
+    else
+      @anagram_cache.values.select { |word_values| word_values.length > 1 }
     end
   end
 
-  def to_s(show)
-    show.join(", ")
+  def to_s
+    get_anagrams.map { |words| words.join(", ") }.join("\n")
   end
 
   def word_hash(get_hash)
